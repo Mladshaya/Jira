@@ -1,0 +1,10 @@
+# Default ignored files
+target/
+/.idea
+/.allure
+/target
+/build
+/allure-results
+/out
+*.iml
+*.log
