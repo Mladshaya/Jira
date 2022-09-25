@@ -5,6 +5,7 @@ import io.qameta.allure.Step;
 
 import static PageObject.PageElements.ProjectPageElements.*;
 import static com.codeborne.selenide.Condition.*;
+import static org.junit.Assert.assertTrue;
 
 public class ProjectPageSteps {
 
@@ -12,18 +13,14 @@ public class ProjectPageSteps {
     public static void openProject() {
         buttonProject.shouldBe(Condition.enabled).click();
         buttonAllProject.shouldBe(Condition.visible).click();
-        searchProject.sendKeys("Test");
+        searchProject.setValue("Test");
         searchProject.pressEnter();
         linkProject.shouldHave(Condition.exactText("Test")).click();
-            }
-
-    @Step
-    public static void openTasks() {
-        tasksList.shouldBe(Condition.enabled).click();
     }
 
     @Step
     public static void findTasksAmount() {
+        tasksList.shouldBe(Condition.enabled).click();
         String text = tasksAmount.getText();
         String amount = text.substring(text.lastIndexOf("из") + 2, text.length());
         System.out.println(amount);
@@ -33,7 +30,7 @@ public class ProjectPageSteps {
     public static void searchTask() {
         taskFilter.shouldBe(Condition.enabled).click();
         buttonAllTasks.click();
-        searchField.shouldBe(Condition.empty).sendKeys("TestSelenium_bug");
+        searchField.shouldBe(Condition.empty).setValue("TestSelenium_bug");
         searchField.pressEnter();
     }
 
@@ -42,6 +39,7 @@ public class ProjectPageSteps {
         //taskVersion.shouldHave(text("Version 2.0"));
         String version = taskVersion.getText();
         System.out.println("Version: " + version);
+        assertTrue(version.contains("Version 2.0"));
 
 
     }
@@ -51,6 +49,7 @@ public class ProjectPageSteps {
         taskStatus.shouldBe(visible);
         String status = taskStatus.getText();
         System.out.println("Status: " + status);
+        assertTrue(status.contains("СДЕЛАТЬ"));
     }
 }
 

@@ -14,7 +14,7 @@ public class AuthorizationPageSteps {
     }
 
     @Step
-    public static void authorization(String login) {
+    public static void authorization() {
         loginLane.shouldBe(visible).sendKeys(getConfigurationValue("login"));
         passwordLane.sendKeys(getConfigurationValue("password"));
         buttonLogin.shouldBe(enabled).click();

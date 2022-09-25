@@ -2,7 +2,6 @@ package PageObject.PageSteps.TestJira;
 
 import Hooks.WebHooks;
 import org.junit.Test;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 
@@ -19,7 +18,7 @@ public class TestJira extends WebHooks {
     @DisplayName("ТК 1. Авторизация")
     public void Test_1() {
         openUrl(getConfigurationValue("jiraUrl"));
-        authorization(getConfigurationValue("login"));
+        authorization();
     }
 
     @Test
@@ -28,7 +27,7 @@ public class TestJira extends WebHooks {
     @DisplayName("ТК 2. Открытие проекта")
     public void Test_2() {
         openUrl(getConfigurationValue("jiraUrl"));
-        authorization(getConfigurationValue("login"));
+        authorization();
         openProject();
             }
 
@@ -38,9 +37,8 @@ public class TestJira extends WebHooks {
     @DisplayName("ТК 3. Нахождение количества заведенных задач в проекте")
     public void Test_3(){
         openUrl(getConfigurationValue("jiraUrl"));
-        authorization(getConfigurationValue("login"));
+        authorization();
         openProject();
-        openTasks();
         findTasksAmount();
     }
 
@@ -50,13 +48,11 @@ public class TestJira extends WebHooks {
     @DisplayName("ТК 4. Проверка статуса и версии задачи")
     public void Test_4(){
         openUrl(getConfigurationValue("jiraUrl"));
-        authorization(getConfigurationValue("login"));
+        authorization();
         openProject();
-        openTasks();
         findTasksAmount();
         searchTask();
         checkVersion();
-        Assertions.assertEquals("Version 2.0", "Version 2.0");
         checkStatus();
     }
 
@@ -66,13 +62,11 @@ public class TestJira extends WebHooks {
     @DisplayName("ТК 5. Заведение дефекта и проверка смены статусов")
     public void  Test_5(){
         openUrl(getConfigurationValue("jiraUrl"));
-        authorization(getConfigurationValue("login"));
+        authorization();
         openProject();
-        openTasks();
         findTasksAmount();
         searchTask();
         checkVersion();
-        Assertions.assertEquals("Version 2.0", "Version 2.0");
         checkStatus();
         createTask();
         clickToInwork();

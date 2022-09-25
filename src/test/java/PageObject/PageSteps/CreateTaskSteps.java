@@ -2,9 +2,10 @@ package PageObject.PageSteps;
 
 import com.codeborne.selenide.Condition;
 import io.qameta.allure.Step;
+import java.time.Duration;
 
 import static PageObject.PageElements.CreateTaskElements.*;
-
+import static com.codeborne.selenide.Condition.visible;
 
 public class CreateTaskSteps {
 
@@ -14,11 +15,11 @@ public class CreateTaskSteps {
         issueTypeField.click();
         issueTypeField.sendKeys("Ошибка");
         //issueTypeField.pressEnter();
-        summaryField.click();
-        summaryField.sendKeys("Bug test");
+        summaryField.shouldBe(visible, Duration.ofSeconds(60)).click();
+        summaryField.setValue("Bug test");
         buttonText.click();
         descriptionField.click();
-        descriptionField.sendKeys("Bug description. Actual result. Expected result");
+        descriptionField.setValue("Bug description. Actual result. Expected result");
         priorityField.click();
         priorityField.sendKeys("High");
         //priorityField.pressEnter();
@@ -26,7 +27,7 @@ public class CreateTaskSteps {
         assigneeField.sendKeys("shustova");
         //assigneeField.pressEnter();
         buttonCreateTask.click();
-        linkTask.shouldBe(Condition.visible).click();
+        linkTask.shouldBe(visible).click();
     }
 
     public static void clickToInwork() {
@@ -37,12 +38,12 @@ public class CreateTaskSteps {
         statusFieldInwork.shouldHave(Condition.text("В работе"));
     }
 
-    public static void changeToDoneStatus(){
+    public static void changeToDoneStatus() {
         dropdownStatusTask.click();
         doneStatusTask.click();
     }
 
-    public static void checkDoneStatus(){
+    public static void checkDoneStatus() {
         statusFieldDone.shouldHave(Condition.text("Готово"));
     }
 }
