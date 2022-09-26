@@ -1,7 +1,7 @@
 package PageObject.PageSteps.TestJira;
 
 import Hooks.WebHooks;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 

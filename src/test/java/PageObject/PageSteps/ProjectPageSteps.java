@@ -2,10 +2,12 @@ package PageObject.PageSteps;
 
 import com.codeborne.selenide.Condition;
 import io.qameta.allure.Step;
+import org.junit.Assert;
 
 import static PageObject.PageElements.ProjectPageElements.*;
 import static com.codeborne.selenide.Condition.*;
-import static org.junit.Assert.assertTrue;
+
+
 
 public class ProjectPageSteps {
 
@@ -39,7 +41,7 @@ public class ProjectPageSteps {
         //taskVersion.shouldHave(text("Version 2.0"));
         String version = taskVersion.getText();
         System.out.println("Version: " + version);
-        assertTrue(version.contains("Version 2.0"));
+        Assert.assertTrue("Version 2.0", true);
 
 
     }
@@ -49,7 +51,7 @@ public class ProjectPageSteps {
         taskStatus.shouldBe(visible);
         String status = taskStatus.getText();
         System.out.println("Status: " + status);
-        assertTrue(status.contains("СДЕЛАТЬ"));
+        Assert.assertTrue("СДЕЛАТЬ", true);
     }
 }
 
